@@ -1,6 +1,7 @@
 ﻿
 using Blazui.Component;
 using Blazui.Component.Dom;
+using Markdig;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System;
@@ -14,7 +15,9 @@ namespace Blazui.Markdown
     {
         internal static IDictionary<Icon, IconDescriptionAttribute> allIcons = new Dictionary<Icon, IconDescriptionAttribute>();
 
+        internal MarkupString previewHtml = (MarkupString)string.Empty;
         internal IDictionary<Icon, IconDescriptionAttribute> icons;
+        private bool editorRendered = false;
         /// <summary>
         /// 工具栏图标
         /// </summary>
@@ -23,7 +26,7 @@ namespace Blazui.Markdown
         /// 高度
         /// </summary>
         [Parameter]
-        public float Height { get; set; } = 300;
+        public float Height { get; set; } = 500;
         internal ElementReference textarea;
 
         static BMarkdownEditorBase()
@@ -61,7 +64,21 @@ namespace Blazui.Markdown
         protected override void OnAfterRender(bool firstRender)
         {
             base.OnAfterRender(firstRender);
-            JSRuntime.InvokeVoidAsync("initilizeEditor", textarea);
+            if (editorRendered)
+            {
+                return;
+            }
+            editorRendered = true;
+            JSRuntime.InvokeVoidAsync("initilizeEditor", textarea, DotNetObjectReference.Create(this), Height);
+        }
+
+        [JSInvokable("refreshPreview")]
+        public void RefreshPreview(string value)
+        {
+            var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
+            previewHtml = (MarkupString)Markdig.Markdown.ToHtml(value, pipeline);
+            RequireRender = true;
+            StateHasChanged();
         }
     }
 }

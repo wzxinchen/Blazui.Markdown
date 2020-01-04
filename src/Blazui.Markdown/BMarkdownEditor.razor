@@ -2,12 +2,16 @@
 
 <div class="editormd pui-z-depth-3 pui-bg-white editormd-vertical" style="width: 100%;height:@(Height)px;">
     <textarea class="editormd-markdown-editor" @ref="textarea"></textarea>
-    <div class="editormd-preview">
+    <div class="editormd-preview" style="display: block;height:@(Height-42)px;top:43px;">
         <div class="markdown-body editormd-preview-container" previewcontainer="true" style="padding: 20px;">
-
+            @previewHtml
         </div>
     </div>
-    <div class="editormd-toolbar" style="display: block; position: absolute; width: 100%; left: 0px;">
+    <div class="editormd-toolbar" style="        display: block;
+        position: absolute;
+        width: 100%;
+        left: 0px;
+">
         <div class="editormd-toolbar-container">
             <ul class="editormd-menu">
                 <li><a href="javascript:;" title="Bold" unselectable="on"><i class="fa fa-bold" name="bold" unselectable="on"></i></a></li>
