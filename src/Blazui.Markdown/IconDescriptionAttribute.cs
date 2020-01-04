@@ -10,5 +10,6 @@ namespace Blazui.Markdown
         public string IconCls { get; set; }
         public Type Handler { get; set; }
         public string Title { get; set; }
+        public string Text { get; set; }
     }
 }
