@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\editor.css" />
+    <None Include="wwwroot\css\editormd.min.css" />
+    <None Include="wwwroot\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\images\loading.gif" />
+    <None Include="wwwroot\js\addons.min.js" />
+    <None Include="wwwroot\js\continuelist.js" />
+    <None Include="wwwroot\js\dom.js" />
+    <None Include="wwwroot\js\modes.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Blazui.Component" Version="0.0.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>
