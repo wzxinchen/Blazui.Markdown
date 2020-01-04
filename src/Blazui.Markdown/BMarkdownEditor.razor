@@ -2,7 +2,7 @@
 
 <div class="editormd pui-z-depth-3 pui-bg-white editormd-vertical" style="width: 100%;height:@(Height)px;">
     <textarea class="editormd-markdown-editor" @ref="textarea"></textarea>
-    <div class="editormd-preview" style="display: block;height:@(Height-42)px;top:43px;">
+    <div class="editormd-preview" style="display: block;height:@(Height-42)px;top:43px;" @ref="preview">
         <div class="markdown-body editormd-preview-container" previewcontainer="true" style="padding: 20px;">
             @previewHtml
         </div>

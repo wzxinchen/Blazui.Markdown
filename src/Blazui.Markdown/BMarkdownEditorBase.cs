@@ -18,9 +18,24 @@ namespace Blazui.Markdown
         internal MarkupString previewHtml = (MarkupString)string.Empty;
         internal IDictionary<Icon, IconDescriptionAttribute> icons;
         private bool editorRendered = false;
+        private MarkdownPipeline pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
+        /// <summary>
+        /// 值
+        /// </summary>
+        [Parameter]
+        public string Value { get; set; }
+
+        /// <summary>
+        /// 当编辑器滚动时，预览跟着滚动
+        /// </summary>
+        [Parameter]
+        public bool EnableSyncScroll { get; set; } = true;
+        [Parameter]
+        public EventCallback<string> ValueChanged { get; set; }
         /// <summary>
         /// 工具栏图标
         /// </summary>
+        [Parameter]
         public Icon[] Icons { get; set; }
         /// <summary>
         /// 高度
@@ -28,6 +43,7 @@ namespace Blazui.Markdown
         [Parameter]
         public float Height { get; set; } = 500;
         internal ElementReference textarea;
+        internal ElementReference preview;
 
         static BMarkdownEditorBase()
         {
@@ -69,13 +85,19 @@ namespace Blazui.Markdown
                 return;
             }
             editorRendered = true;
-            JSRuntime.InvokeVoidAsync("initilizeEditor", textarea, DotNetObjectReference.Create(this), Height);
+            JSRuntime.InvokeVoidAsync("initilizeEditor", textarea, DotNetObjectReference.Create(this), Height, Value, EnableSyncScroll);
+            RefreshPreview(Value);
+        }
+
+        [JSInvokable("scrollPreview")]
+        public void ScrollPreview(float scrollTop)
+        {
+            JSRuntime.InvokeVoidAsync("scrollPreview", preview, scrollTop);
         }
 
         [JSInvokable("refreshPreview")]
         public void RefreshPreview(string value)
         {
-            var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
             previewHtml = (MarkupString)Markdig.Markdown.ToHtml(value, pipeline);
             RequireRender = true;
             StateHasChanged();
