@@ -84,7 +84,7 @@ namespace Blazui.Markdown
                 Alert("该图标没有对应的处理程序");
                 return;
             }
-            handler.Handle(textarea);
+            handler.HandleAsync(textarea);
         }
 
         protected override void OnInitialized()

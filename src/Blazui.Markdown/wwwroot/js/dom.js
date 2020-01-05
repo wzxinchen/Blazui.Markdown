@@ -37,8 +37,17 @@ window.wrapSelection = function (el, prefix, suffix) {
         selection = "内容";
     }
     editor.replaceSelection(prefix + selection + suffix);
-}
+};
+window.replaceSelection = function (el, content) {
+    var editor = this.markdownEditors[el];
+    editor.replaceSelection(content);
+};
 window.append = function (el, content) {
     var editor = this.markdownEditors[el];
     editor.replaceSelection(content);
-}
+};
+window.getSelection = function (el) {
+    var editor = this.markdownEditors[el];
+    var selection = editor.getSelection();
+    return selection;
+};

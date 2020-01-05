@@ -16,9 +16,9 @@ namespace Blazui.Markdown.IconHandlers
             this.jSRuntime = jSRuntime;
         }
 
-        public void Handle(ElementReference textarea)
+        public async Task HandleAsync(ElementReference textarea)
         {
-            jSRuntime.InvokeVoidAsync("wrapSelection", textarea, "1. ", "");
+            await jSRuntime.InvokeVoidAsync("wrapSelection", textarea, "1. ", "");
         }
     }
 }
