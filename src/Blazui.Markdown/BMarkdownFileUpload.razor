@@ -1,0 +1,10 @@
+﻿@inherits BMarkdownFileUploadBase
+
+<BTab>
+    <BTabPanel Title="本地上传（粘贴上传）">
+        <BUpload UploadType="UploadType.Image" Url="@UploadUrl" OnFileListUpload="UpdateFiles" OnDeleteFile="OnDeleteFile"></BUpload>
+    </BTabPanel>
+    <BTabPanel Title="网络图片">
+        <BInput TValue="string" ValueChanged="UpdateUrl"></BInput>
+    </BTabPanel>
+</BTab>
