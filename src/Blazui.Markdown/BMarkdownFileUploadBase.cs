@@ -17,11 +17,40 @@ namespace Blazui.Markdown
         public string UploadUrl { get; set; }
 
         /// <summary>
+        /// 上传类型
+        /// </summary>
+        [Parameter]
+        public UploadType UploadType { get; set; }
+
+        /// <summary>
         /// 文件地址列表
         /// </summary>
         [Parameter]
         public string[] Urls { get; set; }
 
+        /// <summary>
+        /// 单文件最大限制，KB为单位
+        /// </summary>
+        [Parameter]
+        public long MaxSize { get; set; }
+
+        /// <summary>
+        /// 如果上传的是图片，指定图片最大宽度
+        /// </summary>
+        [Parameter]
+        public float Width { get; set; }
+
+        /// <summary>
+        /// 如果上传的是图片，指定图片最大高度
+        /// </summary>
+        [Parameter]
+        public float Height { get; set; }
+
+        /// <summary>
+        /// 允许上传的文件后缀
+        /// </summary>
+        [Parameter]
+        public string[] AllowExtensions { get; set; }
         [Parameter]
         public EventCallback<string[]> UrlsChanged { get; set; }
 

@@ -30,6 +30,10 @@ namespace Blazui.Markdown.IconHandlers
             var parameters = new Dictionary<string, object>();
             parameters.Add(nameof(Image.Image), imageModel);
             parameters.Add(nameof(Image.UploadUrl), editor.UploadUrl);
+            parameters.Add(nameof(Image.MaxSize), editor.ImageMaxSize);
+            parameters.Add(nameof(Image.Width), editor.ImageWidth);
+            parameters.Add(nameof(Image.Height), editor.ImageHeight);
+            parameters.Add(nameof(Image.AllowExtensions), editor.AllowImageExtensions);
             var result = await dialogService.ShowDialogAsync<Image, ImageModel>("插入图片", parameters);
             imageModel = result.Result;
             var title = imageModel.Title;
@@ -37,7 +41,8 @@ namespace Blazui.Markdown.IconHandlers
             {
                 title = $"\"{title}\"";
             }
-            var image = $"![{imageModel.Alt}]({imageModel.Urls} {title})";
+            var images = imageModel.Urls.Select(url => $"![{imageModel.Alt}]({url} {title})");
+            var image = string.Join("\n", images);
             await jSRuntime.InvokeVoidAsync("replaceSelection", editor.Textarea, image);
         }
     }

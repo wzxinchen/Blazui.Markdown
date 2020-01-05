@@ -52,6 +52,41 @@ namespace Blazui.Markdown
         [Parameter]
         public string UploadUrl { get; set; }
 
+        /// <summary>
+        /// 单文件图片最大限制，KB为单位
+        /// </summary>
+        [Parameter]
+        public long ImageMaxSize { get; set; }
+
+        /// <summary>
+        /// 单文件最大限制，KB为单位
+        /// </summary>
+        [Parameter]
+        public long FileMaxSize { get; set; }
+        /// <summary>
+        /// 图片最大宽度
+        /// </summary>
+        [Parameter]
+        public float ImageWidth { get; set; }
+
+        /// <summary>
+        /// 图片最大高度
+        /// </summary>
+        [Parameter]
+        public float ImageHeight { get; set; }
+
+        /// <summary>
+        /// 允许上传的图片文件后缀
+        /// </summary>
+        [Parameter]
+        public string[] AllowImageExtensions { get; set; } = new string[] { ".jpg", ".png", ".jpeg", ".gif", ".bmp" };
+
+        /// <summary>
+        /// 允许上传的普通文件后缀
+        /// </summary>
+        [Parameter]
+        public string[] AllowFileExtensions { get; set; } = new string[0];
+
         internal protected ElementReference textarea;
 
         internal ElementReference Textarea

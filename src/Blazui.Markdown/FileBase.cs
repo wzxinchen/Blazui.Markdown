@@ -8,12 +8,9 @@ using System.Text;
 
 namespace Blazui.Markdown
 {
-    public class ImageBase : BComponentBase
+    public class FileBase : BComponentBase
     {
         internal protected BForm form;
-
-        [Parameter]
-        public ImageModel Image { get; set; }
 
         [Parameter]
         public string UploadUrl { get; set; }
@@ -23,18 +20,6 @@ namespace Blazui.Markdown
         /// </summary>
         [Parameter]
         public long MaxSize { get; set; }
-
-        /// <summary>
-        /// 图片最大宽度
-        /// </summary>
-        [Parameter]
-        public float Width { get; set; }
-
-        /// <summary>
-        /// 图片最大高度
-        /// </summary>
-        [Parameter]
-        public float Height { get; set; }
 
         /// <summary>
         /// 允许上传的文件后缀
@@ -47,7 +32,7 @@ namespace Blazui.Markdown
             {
                 return;
             }
-            _ = DialogService.CloseDialogAsync(this, form.GetValue<ImageModel>());
+            _ = DialogService.CloseDialogAsync(this, form.GetValue<FileModel>());
         }
     }
 }

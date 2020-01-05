@@ -1,30 +1,3 @@
-﻿/*div.editormd {
-    display: flex;
-    flex-direction: column;
+﻿.CodeMirror-wrap pre.CodeMirror-line, .CodeMirror-wrap pre.CodeMirror-line-like {
+    word-break: break-word !important;
 }
-
-    div.editormd > div.editormd-body {
-        display: flex;
-    }
-
-    div.editormd > div.editormd-toolbar {
-        position: unset !important;
-        min-height: 35px;
-        height: 35px;
-        display: flex;
-    }
-
-        div.editormd > div.editormd-toolbar > div.editormd-toolbar-container {
-            flex: 1;
-            height: auto !important;
-        }
-
-    div.editormd > div.editormd-body > div.editormd-markdown-editor {
-        flex: 1;
-        display: flex;
-    }
-
-    div.editormd > div.editormd-body > div.editormd-preview {
-        flex: 1;
-        display: flex;
-    }*/
