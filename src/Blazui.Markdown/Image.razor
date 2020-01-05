@@ -1,0 +1,24 @@
+﻿@inherits ImageBase
+@using Blazui.Markdown.IconHandlers
+
+<BForm @ref="form" Value="Image">
+    <BFormItem TValue="string" Name="@nameof(ImageModel.Alt)" Label="ALT">
+        <BInput TValue="string"></BInput>
+    </BFormItem>
+    <BFormItem TValue="string" Name="@nameof(ImageModel.Title)" Label="标题">
+        <BInput TValue="string"></BInput>
+    </BFormItem>
+    <BFormItem TValue="string" IsRequired="true" Name="@nameof(ImageModel.Urls)" Label="地址">
+        <BTab>
+            <BTabPanel Title="本地上传（粘贴上传）">
+                <BUpload UploadType="UploadType.Image" Url="@UploadUrl"></BUpload>
+            </BTabPanel>
+            <BTabPanel Title="网络图片">
+                <BInput TValue="string"></BInput>
+            </BTabPanel>
+        </BTab>
+    </BFormItem>
+    <BFormActionItem Style="text-align:right">
+        <BButton Type="@ButtonType.Primary" @onclick="Submit">确定</BButton>
+    </BFormActionItem>
+</BForm>
