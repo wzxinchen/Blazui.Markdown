@@ -7,5 +7,6 @@ namespace Blazui.Markdown
 {
     public interface IIconHandler
     {
+        void Handle(Microsoft.AspNetCore.Components.ElementReference textarea);
     }
 }

@@ -7,6 +7,7 @@ using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Blazui.Markdown
@@ -25,6 +26,8 @@ namespace Blazui.Markdown
         [Parameter]
         public string Value { get; set; }
 
+        [Inject]
+        private IServiceProvider serviceProvider { get; set; }
         /// <summary>
         /// 当编辑器滚动时，预览跟着滚动
         /// </summary>
@@ -49,6 +52,11 @@ namespace Blazui.Markdown
         {
             var iconType = typeof(Icon);
             var iconNames = Enum.GetNames(typeof(Icon));
+            var handlers = Assembly.GetExecutingAssembly().GetExportedTypes()
+                 .Where(x => x.IsClass)
+                 .Where(x => x.Namespace.EndsWith("IconHandlers"))
+                 .Where(x => x.GetInterfaces().Any(x => x == typeof(IIconHandler)))
+                 .ToList();
             foreach (var iconName in iconNames)
             {
                 var iconDescription = iconType.GetField(iconName).GetCustomAttributes(false).OfType<IconDescriptionAttribute>().FirstOrDefault() ?? new IconDescriptionAttribute();
@@ -60,8 +68,23 @@ namespace Blazui.Markdown
                 {
                     iconDescription.Title = iconName;
                 }
+                if (iconDescription.Handler == null)
+                {
+                    iconDescription.Handler = handlers.FirstOrDefault(x => x.Name == $"{iconName}Handler");
+                }
                 allIcons.Add(Enum.Parse<Icon>(iconName), iconDescription);
             }
+        }
+
+        internal protected void Handle(IconDescriptionAttribute iconDescription)
+        {
+            var handler = (IIconHandler)serviceProvider.GetService(iconDescription.Handler);
+            if (handler == null)
+            {
+                Alert("该图标没有对应的处理程序");
+                return;
+            }
+            handler.Handle(textarea);
         }
 
         protected override void OnInitialized()

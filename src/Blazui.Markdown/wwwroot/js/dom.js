@@ -1,3 +1,4 @@
+﻿var markdownEditors = {};
 window.initilizeEditor = function (el, mdEditor, height, value, enableSyncScroll) {
     var editor = CodeMirror.fromTextArea(el, {
         lineNumbers: true,
@@ -17,7 +18,7 @@ window.initilizeEditor = function (el, mdEditor, height, value, enableSyncScroll
     editor.on("change", function () {
         mdEditor.invokeMethodAsync("refreshPreview", editor.getValue());
     });
-
+    markdownEditors[el] = editor;
     if (!enableSyncScroll) {
         return;
     }
@@ -29,3 +30,15 @@ window.initilizeEditor = function (el, mdEditor, height, value, enableSyncScroll
 window.scrollPreview = function (preview, scrollTop) {
     preview.scrollTop = scrollTop;
 };
+window.wrapSelection = function (el, prefix, suffix) {
+    var editor = this.markdownEditors[el];
+    var selection = editor.getSelection();
+    if (!selection) {
+        selection = "内容";
+    }
+    editor.replaceSelection(prefix + selection + suffix);
+}
+window.append = function (el, content) {
+    var editor = this.markdownEditors[el];
+    editor.replaceSelection(content);
+}

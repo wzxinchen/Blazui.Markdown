@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace Blazui.Markdown.IconHandlers
 {
-    public class BoldHandler : IIconHandler
+    public class Heading5Handler : IIconHandler
     {
         private readonly IJSRuntime jSRuntime;
 
-        public BoldHandler(IJSRuntime jSRuntime)
+        public Heading5Handler(IJSRuntime jSRuntime)
         {
             this.jSRuntime = jSRuntime;
         }
 
         public void Handle(ElementReference textarea)
         {
-            jSRuntime.InvokeVoidAsync("wrapSelection", textarea, "**", "**");
+            jSRuntime.InvokeVoidAsync("wrapSelection", textarea, "##### ", "");
         }
     }
 }

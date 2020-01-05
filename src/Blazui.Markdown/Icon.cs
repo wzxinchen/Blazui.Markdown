@@ -10,17 +10,19 @@ namespace Blazui.Markdown
         /// <summary>
         /// 加粗
         /// </summary>
-        [IconDescription()]
+        [IconDescription(Title ="加粗")]
         Bold = 0,
 
         /// <summary>
         /// 删除线
         /// </summary>
+        [IconDescription(Title = "删除线")]
         Strikethrough = 1,
 
         /// <summary>
         /// 斜体
         /// </summary>
+        [IconDescription(Title = "斜体")]
         Italic = 2,
 
         /// <summary>
