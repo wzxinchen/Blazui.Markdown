@@ -45,7 +45,22 @@ namespace Blazui.Markdown
         /// </summary>
         [Parameter]
         public float Height { get; set; } = 500;
-        internal ElementReference textarea;
+
+        /// <summary>
+        /// 文件上传地址
+        /// </summary>
+        [Parameter]
+        public string UploadUrl { get; set; }
+
+        internal protected ElementReference textarea;
+
+        internal ElementReference Textarea
+        {
+            get
+            {
+                return textarea;
+            }
+        }
         internal ElementReference preview;
 
         static BMarkdownEditorBase()
@@ -84,7 +99,7 @@ namespace Blazui.Markdown
                 Alert("该图标没有对应的处理程序");
                 return;
             }
-            handler.HandleAsync(textarea);
+            handler.HandleAsync(this);
         }
 
         protected override void OnInitialized()

@@ -19,9 +19,9 @@ namespace Blazui.Markdown.IconHandlers
             this.dialogService = dialogService;
         }
 
-        public async Task HandleAsync(ElementReference textarea)
+        public async Task HandleAsync(BMarkdownEditorBase editor)
         {
-            var linkName = await jSRuntime.InvokeAsync<string>("getSelection", textarea);
+            var linkName = await jSRuntime.InvokeAsync<string>("getSelection", editor.Textarea);
             var linkModel = new LinkModel
             {
                 Name = linkName,
@@ -37,7 +37,7 @@ namespace Blazui.Markdown.IconHandlers
                 title = $"\"{title}\"";
             }
             var link = $"[{linkModel.Name}]({linkModel.Url} {title})";
-            await jSRuntime.InvokeVoidAsync("replaceSelection", textarea, link);
+            await jSRuntime.InvokeVoidAsync("replaceSelection", editor.Textarea, link);
         }
     }
 }

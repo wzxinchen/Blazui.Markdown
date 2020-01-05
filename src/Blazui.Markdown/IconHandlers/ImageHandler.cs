@@ -19,9 +19,9 @@ namespace Blazui.Markdown.IconHandlers
             this.dialogService = dialogService;
         }
 
-        public async Task HandleAsync(ElementReference textarea)
+        public async Task HandleAsync(BMarkdownEditorBase editor)
         {
-            var imageName = await jSRuntime.InvokeAsync<string>("getSelection", textarea);
+            var imageName = await jSRuntime.InvokeAsync<string>("getSelection", editor.textarea);
             var imageModel = new ImageModel
             {
                 Alt = imageName,
@@ -29,7 +29,7 @@ namespace Blazui.Markdown.IconHandlers
             };
             var parameters = new Dictionary<string, object>();
             parameters.Add(nameof(Image.Image), imageModel);
-            parameters.Add(nameof(Image.UploadUrl), "http://localhost");
+            parameters.Add(nameof(Image.UploadUrl), editor.UploadUrl);
             var result = await dialogService.ShowDialogAsync<Image, ImageModel>("插入图片", parameters);
             imageModel = result.Result;
             var title = imageModel.Title;
@@ -38,7 +38,7 @@ namespace Blazui.Markdown.IconHandlers
                 title = $"\"{title}\"";
             }
             var image = $"![{imageModel.Alt}]({imageModel.Urls} {title})";
-            await jSRuntime.InvokeVoidAsync("replaceSelection", textarea, image);
+            await jSRuntime.InvokeVoidAsync("replaceSelection", editor.Textarea, image);
         }
     }
 }
