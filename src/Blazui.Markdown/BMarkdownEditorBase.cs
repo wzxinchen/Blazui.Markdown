@@ -1,6 +1,7 @@
 ﻿
 using Blazui.Component;
 using Blazui.Component.Dom;
+using Blazui.Component.Form;
 using Markdig;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Blazui.Markdown
 {
-    public class BMarkdownEditorBase : BComponentBase
+    public class BMarkdownEditorBase : BFieldComponentBase<string>
     {
         internal static IDictionary<Icon, IconDescriptionAttribute> allIcons = new Dictionary<Icon, IconDescriptionAttribute>();
 
@@ -28,6 +29,7 @@ namespace Blazui.Markdown
 
         [Inject]
         private IServiceProvider serviceProvider { get; set; }
+
         /// <summary>
         /// 当编辑器滚动时，预览跟着滚动
         /// </summary>
@@ -140,6 +142,36 @@ namespace Blazui.Markdown
             }
         }
 
+        protected override void FormItem_OnReset(object value, bool requireRerender)
+        {
+            Value = value?.ToString();
+            if (ValueChanged.HasDelegate)
+            {
+                _ = ValueChanged.InvokeAsync(Value);
+            }
+            StateHasChanged();
+        }
+
+        protected override void OnParametersSet()
+        {
+            base.OnParametersSet();
+            if (FormItem == null)
+            {
+                return;
+            }
+            if (FormItem.OriginValueHasRendered)
+            {
+                SetFieldValue(Value ?? FormItem.Value, false);
+                return;
+            }
+            FormItem.OriginValueHasRendered = true;
+            if (FormItem.Form.Values.Any())
+            {
+                Value = FormItem.OriginValue;
+            }
+            SetFieldValue(Value, false);
+        }
+
         internal protected void Handle(IconDescriptionAttribute iconDescription)
         {
             var handler = (IIconHandler)serviceProvider.GetService(iconDescription.Handler);
@@ -185,6 +217,12 @@ namespace Blazui.Markdown
         [JSInvokable("refreshPreview")]
         public void RefreshPreview(string value)
         {
+            Value = value.Trim();
+            SetFieldValue(Value, true);
+            if (ValueChanged.HasDelegate)
+            {
+                _ = ValueChanged.InvokeAsync(Value);
+            }
             previewHtml = (MarkupString)Markdig.Markdown.ToHtml(value, pipeline);
             RequireRender = true;
             StateHasChanged();

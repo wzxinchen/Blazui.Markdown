@@ -4,10 +4,21 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <ApplicationIcon />
     <OutputType>Library</OutputType>
-    <StartupObject />
+    <IsPackable>true</IsPackable>
+    <Version>0.0.1</Version>
+    <Authors>wzxinchen</Authors>
+    <Company>wzxinchen</Company>
+    <Description>基于 Blazui 和 Markdig 的 Markdown 编辑器</Description>
+    <PackageProjectUrl>https://github.com/wzxinchen/Blazui.Markdown</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/wzxinchen/Blazui.Markdown</RepositoryUrl>
+    <RepositoryType></RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>obj\Debug\netcoreapp3.1\Blazui.Markdown.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>obj\Debug\netcoreapp3.1\Blazui.Markdown.xml</DocumentationFile>
   </PropertyGroup>
 
@@ -23,15 +34,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazui.Component" Version="0.0.4.32-develop" />
     <PackageReference Include="Markdig" Version="0.18.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Properties\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\blazui\src\Blazui.Component\Blazui.Component.csproj" />
   </ItemGroup>
 
 </Project>
