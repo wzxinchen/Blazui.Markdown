@@ -16,6 +16,12 @@ namespace Blazui.Markdown
         public string UploadUrl { get; set; }
 
         /// <summary>
+        /// 禁用上传
+        /// </summary>
+        [Parameter]
+        public bool DisableUpload { get; set; }
+
+        /// <summary>
         /// 单文件最大限制，KB为单位
         /// </summary>
         [Parameter]

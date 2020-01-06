@@ -9,7 +9,7 @@
         <BInput TValue="string"></BInput>
     </BFormItem>
     <BFormItem TValue="string[]" IsRequired="true" Name="@nameof(FileModel.Urls)" Label="文件">
-        <BMarkdownFileUpload UploadUrl="@UploadUrl" UploadType="UploadType.File" AllowExtensions="AllowExtensions" MaxSize="MaxSize"></BMarkdownFileUpload>
+        <BMarkdownFileUpload DisableUpload="DisableUpload" UploadUrl="@UploadUrl" UploadType="UploadType.File" AllowExtensions="AllowExtensions" MaxSize="MaxSize"></BMarkdownFileUpload>
     </BFormItem>
     <BFormActionItem Style="text-align:right">
         <BButton Type="@ButtonType.Primary" @onclick="Submit">确定</BButton>

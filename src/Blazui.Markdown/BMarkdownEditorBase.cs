@@ -33,6 +33,19 @@ namespace Blazui.Markdown
         /// </summary>
         [Parameter]
         public bool EnableSyncScroll { get; set; } = true;
+
+        /// <summary>
+        /// 禁用文件上传
+        /// </summary>
+        [Parameter]
+        public bool DisableFileUpload { get; set; }
+
+        /// <summary>
+        /// 禁用图片上传
+        /// </summary>
+        [Parameter]
+        public bool DisableImageUpload { get; set; }
+
         [Parameter]
         public EventCallback<string> ValueChanged { get; set; }
         /// <summary>

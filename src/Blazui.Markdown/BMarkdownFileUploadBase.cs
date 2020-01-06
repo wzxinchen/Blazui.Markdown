@@ -17,6 +17,12 @@ namespace Blazui.Markdown
         public string UploadUrl { get; set; }
 
         /// <summary>
+        /// 禁用上传
+        /// </summary>
+        [Parameter]
+        public bool DisableUpload { get; set; }
+
+        /// <summary>
         /// 上传类型
         /// </summary>
         [Parameter]

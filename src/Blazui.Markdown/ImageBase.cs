@@ -15,6 +15,11 @@ namespace Blazui.Markdown
         [Parameter]
         public ImageModel Image { get; set; }
 
+        /// <summary>
+        /// 禁用上传
+        /// </summary>
+        [Parameter]
+        public bool DisableUpload { get; set; }
         [Parameter]
         public string UploadUrl { get; set; }
 

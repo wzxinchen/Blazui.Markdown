@@ -25,6 +25,7 @@ namespace Blazui.Markdown.IconHandlers
             parameters.Add(nameof(File.UploadUrl), editor.UploadUrl);
             parameters.Add(nameof(File.MaxSize), editor.FileMaxSize);
             parameters.Add(nameof(File.AllowExtensions), editor.AllowFileExtensions);
+            parameters.Add(nameof(Image.DisableUpload), editor.DisableFileUpload);
             var result = await dialogService.ShowDialogAsync<File, FileModel>("插入文件", parameters);
             var fileModel = result.Result;
             var title = fileModel.Title;
