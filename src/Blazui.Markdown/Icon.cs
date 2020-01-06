@@ -92,7 +92,7 @@ namespace Blazui.Markdown
         Link,
 
         /// <summary>
-        /// 链接
+        /// 文件
         /// </summary>
         [IconDescription(Title = "文件", IconCls = "fa fa-paperclip")]
         File,
@@ -119,6 +119,6 @@ namespace Blazui.Markdown
         /// 表格
         /// </summary>
         [IconDescription(Title = "表格", IconCls = "fa fa-table")]
-        Tables
+        Table
     }
 }
