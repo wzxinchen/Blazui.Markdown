@@ -27,6 +27,18 @@ namespace Blazui.Markdown
         [Parameter]
         public string Value { get; set; }
 
+        /// <summary>
+        /// 图片上传窗口的提示
+        /// </summary>
+        [Parameter]
+        public string ImageUploadTip { get; set; }
+
+        /// <summary>
+        /// 文件上传窗口的提示
+        /// </summary>
+        [Parameter]
+        public string FileUploadTip { get; set; }
+
         [Inject]
         private IServiceProvider serviceProvider { get; set; }
 

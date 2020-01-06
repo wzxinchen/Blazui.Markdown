@@ -35,6 +35,7 @@ namespace Blazui.Markdown.IconHandlers
             parameters.Add(nameof(Image.Height), editor.ImageHeight);
             parameters.Add(nameof(Image.AllowExtensions), editor.AllowImageExtensions);
             parameters.Add(nameof(Image.DisableUpload), editor.DisableImageUpload);
+            parameters.Add(nameof(Image.Tip), editor.ImageUploadTip);
             var result = await dialogService.ShowDialogAsync<Image, ImageModel>("插入图片", parameters);
             imageModel = result.Result;
             var title = imageModel.Title;
