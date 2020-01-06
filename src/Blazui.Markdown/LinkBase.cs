@@ -15,9 +15,6 @@ namespace Blazui.Markdown
         [Parameter]
         public LinkModel Link { get; set; }
 
-        [Inject]
-        internal DialogService DialogService { get; set; }
-
         internal protected void Submit()
         {
             if (!form.IsValid())
