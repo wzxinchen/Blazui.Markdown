@@ -16,6 +16,12 @@ namespace Blazui.Markdown
         public ImageModel Image { get; set; }
 
         /// <summary>
+        /// 文本提示
+        /// </summary>
+        [Parameter]
+        public string Tip { get; set; }
+
+        /// <summary>
         /// 禁用上传
         /// </summary>
         [Parameter]

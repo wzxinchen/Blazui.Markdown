@@ -23,6 +23,12 @@ namespace Blazui.Markdown
         public bool DisableUpload { get; set; }
 
         /// <summary>
+        /// 文本提示
+        /// </summary>
+        [Parameter]
+        public string Tip { get; set; }
+
+        /// <summary>
         /// 上传类型
         /// </summary>
         [Parameter]

@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Blazui.Component" Version="0.0.4.32-develop" />
+    <PackageReference Include="Blazui.Component" Version="0.0.6.2" />
     <PackageReference Include="Markdig" Version="0.18.0" />
   </ItemGroup>
 
