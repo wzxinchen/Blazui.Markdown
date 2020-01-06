@@ -25,4 +25,4 @@ jobs:
     - name: pack nuget
       run: dotnet pack src/Blazui.Markdown/Blazui.Markdown.csproj /p:PackageVersion=0.0.1 -c Release --no-build --no-restore
     - name: push nuget
-      run: dotnet nuget push src/Blazui.Markdown/bin/Release/Blazui.Component.0.0.1.nupkg -s https://api.nuget.org/v3/index.json -k oy2d3zyey6htgrfuck7qs4ywlxl74acujgkpg4w5n4ljna
+      run: dotnet nuget push src/Blazui.Markdown/bin/Release/Blazui.Markdown.0.0.1.nupkg -s https://api.nuget.org/v3/index.json -k oy2d3zyey6htgrfuck7qs4ywlxl74acujgkpg4w5n4ljna
