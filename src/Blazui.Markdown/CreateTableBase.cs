@@ -18,6 +18,7 @@ namespace Blazui.Markdown
             {
                 return;
             }
+
             var model = form.GetValue<CreateTableModel>();
             _ = DialogService.CloseDialogAsync(this, model);
         }
