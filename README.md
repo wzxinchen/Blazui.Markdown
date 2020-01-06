@@ -5,7 +5,7 @@
 基于 Blazui 的 Markdown 编辑器 Blazui.Markdown
 模仿了 https://github.com/pandao/editor.md
 
-演示地址：http://blazui.com:9000/markdown
+演示地址：http://blazui.com:9000/markdowneditor
 
 主要更新仓库：https://github.com/wzxinchen/Blazui.Markdown
 
