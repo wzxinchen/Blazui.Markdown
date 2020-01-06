@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C2B1E8E3-6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{1DEE1EF8-479F-4FCD-8B1F-B509CEDAA50D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazui.ServerRender", "..\Blazui\src\Blazui.ServerRender\Blazui.ServerRender.csproj", "{98B2EF3D-6C9A-4978-A3F1-C1E8B4DD774E}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dependencies", "dependencies", "{A5392F4A-D1CE-42DC-BBC1-0CD5770B1B7F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazui.Markdown", "src\Blazui.Markdown\Blazui.Markdown.csproj", "{178E5DCA-41E3-4A40-8408-16EF99B9F5E4}"
@@ -21,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{98B2EF3D-6C9A-4978-A3F1-C1E8B4DD774E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98B2EF3D-6C9A-4978-A3F1-C1E8B4DD774E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98B2EF3D-6C9A-4978-A3F1-C1E8B4DD774E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98B2EF3D-6C9A-4978-A3F1-C1E8B4DD774E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{178E5DCA-41E3-4A40-8408-16EF99B9F5E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{178E5DCA-41E3-4A40-8408-16EF99B9F5E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{178E5DCA-41E3-4A40-8408-16EF99B9F5E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -34,7 +28,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{98B2EF3D-6C9A-4978-A3F1-C1E8B4DD774E} = {1DEE1EF8-479F-4FCD-8B1F-B509CEDAA50D}
 		{178E5DCA-41E3-4A40-8408-16EF99B9F5E4} = {9AE3A07F-0E49-4E5D-8B63-C40F26E1A946}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
