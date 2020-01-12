@@ -20,7 +20,7 @@ namespace Blazui.Markdown
         protected override void OnParametersSet()
         {
             base.OnParametersSet();
-            html = (MarkupString)Markdig.Markdown.ToHtml(Text, pipeline);
+            html = (MarkupString)Markdig.Markdown.ToHtml(Text ?? string.Empty, pipeline);
         }
     }
 }

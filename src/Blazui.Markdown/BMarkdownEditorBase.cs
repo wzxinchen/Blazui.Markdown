@@ -216,7 +216,7 @@ namespace Blazui.Markdown
                 return;
             }
             editorRendered = true;
-            JSRuntime.InvokeVoidAsync("initilizeEditor", textarea, DotNetObjectReference.Create(this), Height, Value, EnableSyncScroll);
+            JSRuntime.InvokeVoidAsync("initilizeEditor", textarea, DotNetObjectReference.Create(this), Height, Value ?? string.Empty, EnableSyncScroll);
             RefreshPreview(Value);
         }
 
@@ -229,13 +229,13 @@ namespace Blazui.Markdown
         [JSInvokable("refreshPreview")]
         public void RefreshPreview(string value)
         {
-            Value = value.Trim();
-            SetFieldValue(Value, true);
+            Value = value?.Trim();
             if (ValueChanged.HasDelegate)
             {
                 _ = ValueChanged.InvokeAsync(Value);
             }
-            previewHtml = (MarkupString)Markdig.Markdown.ToHtml(value, pipeline);
+            SetFieldValue(Value, true);
+            previewHtml = (MarkupString)Markdig.Markdown.ToHtml(value ?? string.Empty, pipeline);
             RequireRender = true;
             StateHasChanged();
         }
