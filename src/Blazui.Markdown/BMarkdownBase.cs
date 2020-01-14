@@ -22,5 +22,10 @@ namespace Blazui.Markdown
             base.OnParametersSet();
             html = (MarkupString)Markdig.Markdown.ToHtml(Text ?? string.Empty, pipeline);
         }
+
+        protected override bool ShouldRender()
+        {
+            return true;
+        }
     }
 }
