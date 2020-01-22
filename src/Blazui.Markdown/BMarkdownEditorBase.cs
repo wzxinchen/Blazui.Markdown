@@ -1,7 +1,7 @@
 ﻿
 using Blazui.Component;
 using Blazui.Component.Dom;
-using Blazui.Component.Form;
+using Blazui.Component;
 using Markdig;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;

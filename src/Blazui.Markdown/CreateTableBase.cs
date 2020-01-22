@@ -1,5 +1,5 @@
 ﻿using Blazui.Component;
-using Blazui.Component.Form;
+using Blazui.Component;
 using Blazui.Markdown.IconHandlers;
 using Microsoft.AspNetCore.Components;
 using System;
