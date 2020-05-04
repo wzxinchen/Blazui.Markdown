@@ -1,5 +1,9 @@
 # Blazui.Markdown
----
+
+## 迁移
+此仓库已迁移至：https://github.com/wzxinchen/Blazui/tree/master/src/Markdown
+
+此仓库不再更新
 
 ## 介绍
 基于 Blazui 的 Markdown 编辑器 Blazui.Markdown
